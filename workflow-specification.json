@@ -1,0 +1,60 @@
+{
+  "artifact_type": "descriptive_workflow_specification",
+  "warning": "This file documents the workflow visible in screenshots. It is NOT a native Langflow export and cannot be assumed to import into Langflow.",
+  "project_name": "Simple Agent",
+  "platform": "Langflow",
+  "components": [
+    {
+      "name": "Chat Input",
+      "role": "Receives the user's message"
+    },
+    {
+      "name": "Agent",
+      "role": "Coordinates the language model and available tools"
+    },
+    {
+      "name": "Gemini language model",
+      "role": "Generates responses for the agent",
+      "configuration_note": "Confirm exact model identifier in Langflow"
+    },
+    {
+      "name": "Web Search",
+      "role": "Searches web/news/RSS sources when invoked"
+    },
+    {
+      "name": "URL",
+      "role": "Fetches content from one or more URLs when invoked"
+    },
+    {
+      "name": "Chat Output",
+      "role": "Displays the final response"
+    }
+  ],
+  "connections": [
+    {
+      "from": "Chat Input",
+      "to": "Agent",
+      "purpose": "User query"
+    },
+    {
+      "from": "URL",
+      "to": "Agent.Tools",
+      "purpose": "Optional URL retrieval tool"
+    },
+    {
+      "from": "Web Search",
+      "to": "Agent.Tools",
+      "purpose": "Optional web search tool"
+    },
+    {
+      "from": "Agent",
+      "to": "Chat Output",
+      "purpose": "Final answer"
+    }
+  ],
+  "example_test": {
+    "question": "who is messi?",
+    "observed_output_summary": "The screenshot shows a response describing Lionel Messi's football career and achievements."
+  },
+  "security": "Keep API credentials in Langflow's credential configuration; do not store secrets in this repository."
+}
